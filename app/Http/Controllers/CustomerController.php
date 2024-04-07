@@ -33,4 +33,12 @@ class CustomerController extends Controller
 
         return response()->json(['message' => 'Customer created successfully', 'customer' => $customer], 201);
     }
+
+    public function getByContactNumber($ContactNumber){
+        $customer = customers::where('ContactNumber', $ContactNumber)->first();
+        if(!$customer) {
+            return response()->json(['message' => 'Customer not found'], 404);
+        }
+        return response()->json($customer);
+    }
 }

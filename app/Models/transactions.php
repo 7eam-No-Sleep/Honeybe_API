@@ -11,13 +11,20 @@ class transactions extends Model
 
     protected $table = 'transactions';
 
+    protected $primaryKey = 'TransactionID';
+
     protected $fillable = [
         'SaleID',
         'CustomerID',
         'TransactionDate',
         'PaymentMethod',
-        'Total Amount'
+        'TotalAmount',
+        'CashReceived',
+        'ChangeGiven',
+        'CheckNumber',
+        'CreditCardNumber',
+        'ExpiryDate'
     ];
 
-    public $timestamps = false;
+    public $timestamps = false; // Assuming you don't need timestamps for this model
 }

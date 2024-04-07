@@ -6,7 +6,7 @@ use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\InventoryController;
 use App\Http\Controllers\TransactionsController;
 use App\Http\Controllers\EmployeeController;
-use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ShiftController;
 
 
 /*
@@ -39,3 +39,11 @@ Route::get('employees', [EmployeeController::class, 'index']);
 Route::get('employee/{id}/credentials', [EmployeeController::class, 'getCredentials']);
 
 Route::get('inventory/{ProductID}', [InventoryController::class, 'show']);
+
+Route::post('transactions', [TransactionsController::class, 'store']);
+
+Route::get('/customer/{ContactNumber}', [CustomerController::class, 'getByContactNumber']);
+
+Route::get('shifts', [ShiftController::class, 'index']);
+
+Route::post('shifts', [ShiftController::class, 'store']);
