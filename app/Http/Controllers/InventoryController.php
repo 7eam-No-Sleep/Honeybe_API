@@ -36,4 +36,20 @@ class InventoryController extends Controller
     
         return response()->json($inventory);
     }
+    public function updateProduct(Request $request, $id)
+{
+    // Find the product by ID
+    $product = inventory::find($id);
+
+    // Check if the product exists
+    if (!$product) {
+        return response()->json(['error' => 'Product not found'], 404);
+    }
+
+    // Update the product with the new data
+    $product->update($request->all());
+
+    // Return a success response
+    return response()->json(['message' => 'Product updated successfully'], 200);
+}
 }

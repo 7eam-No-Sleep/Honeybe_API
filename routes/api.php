@@ -51,3 +51,5 @@ Route::post('shifts', [ShiftController::class, 'store']);
 Route::post('employees', [EmployeeController::class, 'store']);
 
 Route::put('/employee/{id}/logout', [EmployeeController::class, 'updateLogoutTime']);
+
+Route::put('/inventory/products/{id}', [InventoryController::class, 'updateProduct']);
