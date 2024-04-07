@@ -69,4 +69,23 @@ class EmployeeController extends Controller
         // Return the created employee as JSON response
         return response()->json($employee, 201);
     }
+    public function updateLogoutTime($id)
+    {
+        // Find the employee by ID
+        $employee = employees::find($id);
+
+        // Check if the employee exists
+        if (!$employee) {
+            return response()->json(['error' => 'Employee not found'], 404);
+        }
+
+        // Update the last_logout field
+        $employee->last_logout = now(); // Use Laravel's now() helper to get the current date and time
+
+        // Save the changes to the database
+        $employee->save();
+
+        // Return a success response
+        return response()->json(['message' => 'Logout time updated successfully'], 200);
+    }
 }
