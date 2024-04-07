@@ -47,3 +47,6 @@ Route::get('/customer/{ContactNumber}', [CustomerController::class, 'getByContac
 Route::get('shifts', [ShiftController::class, 'index']);
 
 Route::post('shifts', [ShiftController::class, 'store']);
+
+Route::post('employees', [EmployeeController::class, 'store']);
+

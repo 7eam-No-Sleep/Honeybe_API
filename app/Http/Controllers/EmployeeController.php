@@ -18,16 +18,21 @@ class EmployeeController extends Controller
     {
         // Retrieve employee by ID
         $employee = employees::findOrFail($id);
-
+    
         // Validate password (not needed for plain text passwords)
         if ($employee->employee_passcode === $request->password) {
-            // Password matches, generate token
+            // Update last_login
+            $employee->last_login = now();
+            $employee->save();
+    
+            // Generate token
             $token = $this->generateToken($employee);
-
+    
             // Token generated successfully, return token and user role
             return response()->json([
                 'token' => $token,
                 'role' => $employee->role,
+                'userID'=> $employee->employee_id
             ]);
         } else {
             // Password does not match, return error
@@ -36,7 +41,6 @@ class EmployeeController extends Controller
             ], 401);
         }
     }
-
     private function generateToken($employee)
     {
         // Generate a unique token for the employee
@@ -46,5 +50,23 @@ class EmployeeController extends Controller
         // For simplicity, you can just return the token without storing it
 
         return $token;
+    }
+    public function store(Request $request)
+    {
+        // Validate the request data
+        $validatedData = $request->validate([
+            'first_name' => 'required|string|max:255',
+            'last_name' => 'required|string|max:255',
+            'address' => 'required|string|max:255',
+            'phone_number' => 'required|string|max:20',
+            'employee_passcode' => 'required|string|max:255',
+            'role' => 'required|string|in:manager,sales',
+        ]);
+
+        // Create a new employee record
+        $employee = employees::create($validatedData);
+
+        // Return the created employee as JSON response
+        return response()->json($employee, 201);
     }
 }
