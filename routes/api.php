@@ -7,6 +7,7 @@ use App\Http\Controllers\InventoryController;
 use App\Http\Controllers\TransactionsController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\ShiftController;
+use App\Http\Controllers\CardsController;
 
 
 /*
@@ -57,3 +58,9 @@ Route::put('/inventory/products/{id}', [InventoryController::class, 'updateProdu
 Route::get('customers/{CustomerID}', [CustomerController::class, 'show']);
 
 Route::put('customers/{id}', [CustomerController::class,'updateCustomer']);
+
+Route::get('cards', [CardsController::class, 'index']);
+
+Route::post('cards', [CardsController::class, 'store']);
+
+Route::put('cards/{CardNumber}', [CardsController::class, 'updateCard']);
