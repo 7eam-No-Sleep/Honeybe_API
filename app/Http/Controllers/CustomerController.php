@@ -41,4 +41,17 @@ class CustomerController extends Controller
         }
         return response()->json($customer);
     }
+    public function show($CustomerID){
+        $customers = customers::findOrFail($CustomerID);
+        return response()->json($customers);
+    }
+
+    public function updateCustomer(Request $request, $id){
+        $customer = customers::find($id);
+        if (!$customer){
+            return response()->json(['error' => 'Customer not found'], 404);
+        }
+        $customer ->update($request->all());
+        return response()->json(['message'=>'Customer updated successfully'], 200);
+    }
 }

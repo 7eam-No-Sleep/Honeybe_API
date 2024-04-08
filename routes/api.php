@@ -24,11 +24,11 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('customer', [CustomerController::class, 'index']);
+Route::get('customers', [CustomerController::class, 'index']);
 
 Route::get('inventory', [InventoryController::class, 'index']);
 
-Route::post('customer', [CustomerController::class, 'store']);
+Route::post('customers', [CustomerController::class, 'store']);
 
 Route::post('inventory', [InventoryController::class, 'store']);
 
@@ -53,3 +53,7 @@ Route::post('employees', [EmployeeController::class, 'store']);
 Route::put('/employee/{id}/logout', [EmployeeController::class, 'updateLogoutTime']);
 
 Route::put('/inventory/products/{id}', [InventoryController::class, 'updateProduct']);
+
+Route::get('customers/{CustomerID}', [CustomerController::class, 'show']);
+
+Route::put('customers/{id}', [CustomerController::class,'updateCustomer']);
