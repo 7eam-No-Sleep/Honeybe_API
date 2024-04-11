@@ -27,4 +27,8 @@ class CardsController extends Controller
         $cards ->update($request->all());
         return response()->json(['message'=>'Card Updated Successfully'], 200);
     }
+    public function show ($CardNumber){
+        $cards = cards::findOrFail($CardNumber);
+        return response()->json($cards);
+    }
 }

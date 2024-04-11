@@ -18,14 +18,14 @@ class TransactionsController extends Controller
     {
         $validatedData = $request->validate([
             'SaleID' => 'required',
-            'CustomerID' => 'required',
+            'CustomerID' => 'nullable | numeric',
             'TransactionDate' => 'required|date',
             'PaymentMethod' => 'required',
             'TotalAmount' => 'required|numeric',
             'CashReceived' => 'nullable|numeric',
             'ChangeGiven' => 'nullable|numeric',
-            'CheckNumber' => 'nullable|string|max:20',
-            'CreditCardNumber' => 'nullable|string|max:16',
+            'CheckNumber' => 'nullable|numeric',
+            'CreditCardNumber' => 'nullable|numberic',
             'ExpiryDate' => 'nullable|date'
         ]);
 

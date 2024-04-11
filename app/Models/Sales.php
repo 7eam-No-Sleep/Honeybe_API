@@ -18,6 +18,7 @@ class Sales extends Model
         'SaleDate',
         'ItemsSold',
         'TotalPrice',
+        'Discount',
         'employee_id'
     ];
 

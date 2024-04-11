@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\ItemsController;
+use App\Http\Controllers\SalesController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CustomerController;
@@ -8,6 +10,7 @@ use App\Http\Controllers\TransactionsController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\ShiftController;
 use App\Http\Controllers\CardsController;
+
 
 
 /*
@@ -43,7 +46,7 @@ Route::get('inventory/{ProductID}', [InventoryController::class, 'show']);
 
 Route::post('transactions', [TransactionsController::class, 'store']);
 
-Route::get('/customer/{ContactNumber}', [CustomerController::class, 'getByContactNumber']);
+Route::get('/customers/{ContactNumber}', [CustomerController::class, 'getByContactNumber']);
 
 Route::get('shifts', [ShiftController::class, 'index']);
 
@@ -64,3 +67,9 @@ Route::get('cards', [CardsController::class, 'index']);
 Route::post('cards', [CardsController::class, 'store']);
 
 Route::put('cards/{CardNumber}', [CardsController::class, 'updateCard']);
+
+Route::get('cards/{CardNumber}', [CardsController::class, 'show']);
+
+Route::post('sales', [SalesController::class, 'store']);
+
+Route::post('items_sold', [ItemsController::class, 'store']);
