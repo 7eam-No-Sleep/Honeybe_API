@@ -73,3 +73,7 @@ Route::get('cards/{CardNumber}', [CardsController::class, 'show']);
 Route::post('sales', [SalesController::class, 'store']);
 
 Route::post('items_sold', [ItemsController::class, 'store']);
+
+Route::get('transactions/{TransactionID}', [TransactionsController::class, 'show']);
+
+Route::get('items_sold/{SaleID}', [ItemsController::class, 'show']);

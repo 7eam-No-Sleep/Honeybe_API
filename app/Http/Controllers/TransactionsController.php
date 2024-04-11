@@ -33,4 +33,9 @@ class TransactionsController extends Controller
 
         return response()->json($transaction, 201);
     }
+
+    public function show ($TransactionID){
+        $transactions = transactions::findOrFail($TransactionID);
+        return response()->json($transactions);
+    }
 }

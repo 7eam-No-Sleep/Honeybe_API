@@ -12,7 +12,7 @@ class CardsController extends Controller
     }
     public function store(Request $request){
         $validatedData = $request->validate([
-            'Balance'=>'required|integer',
+            'Balance'=>'required|numeric',
             'Status'=>'required|string|in:Active, Inactive'
         ]);
 

@@ -19,4 +19,13 @@ class ItemsController extends Controller
 
         return response()->json($items, 201);
     }
+
+    public function show($saleId)
+    {
+        // Fetch items by sale ID from the database
+        $items = Items::where('SaleID', $saleId)->get();
+
+        // Return the items as a JSON response
+        return response() -> json($items, 201);
+    }
 }
