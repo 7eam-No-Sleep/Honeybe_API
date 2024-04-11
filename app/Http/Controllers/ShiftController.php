@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Shift;
+use App\Models\shift;
 use Illuminate\Http\Request;
 
 class ShiftController extends Controller
 {
     public function index()
     {
-        $shift = Shift::all();
+        $shift = shift::all();
         return response()->json($shift);
     }
 
@@ -26,7 +26,20 @@ class ShiftController extends Controller
             'total_sales' => 'nullable|numeric',
         ]);
 
-        $shift = Shift::create($validatedData);
+        $shift = shift::create($validatedData);
         return response()->json($shift, 201);
+    }
+    public function show($shift_id){
+        $shift = shift::findOrFail($shift_id);
+        return response()->json($shift);
+    }
+    public function updateShift(Request $request, $shift_id){
+        $shift = shift::find($shift_id);
+        if (!$shift){
+            return response()->json(['error' => 'Shift not found'], 404);
+        }
+        $shift ->update($request->all());
+        return response()->json(['message'=>'shift updated successfully'], 200 );
+
     }
 }

@@ -10,6 +10,7 @@ class Items extends Model
     use HasFactory;
     
     protected $table = 'items_sold';
+    
 
     protected $fillable = [
         'SaleID',

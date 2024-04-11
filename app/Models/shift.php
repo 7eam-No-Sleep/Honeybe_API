@@ -5,11 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Shift extends Model
+class shift extends Model
 {
     use HasFactory;
 
     protected $table = 'shift';
+    protected $primaryKey = 'shift_id';
 
     protected $fillable = [
         'employee_id',
@@ -21,4 +22,5 @@ class Shift extends Model
         'total_card_sales',
         'total_sales',
     ];
+    public $timestamps = false; // Assuming you don't need timestamps for this model
 }

@@ -88,4 +88,20 @@ class EmployeeController extends Controller
         // Return a success response
         return response()->json(['message' => 'Logout time updated successfully'], 200);
     }
+    public function updateHours(Request $request, $employee_id)
+{
+    $validatedData = $request->validate([
+        'hours' => 'required|numeric'
+    ]);
+
+    $employee = employees::find($employee_id);
+    if ($employee) {
+        $employee->total_hours_worked += $validatedData['hours'];
+        $employee->save();
+        return response()->json($employee);
+    } else {
+        return response()->json(['message' => 'Employee not found'], 404);
+    }
+}
+
 }

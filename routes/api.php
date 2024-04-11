@@ -48,9 +48,9 @@ Route::post('transactions', [TransactionsController::class, 'store']);
 
 Route::get('/customers/{ContactNumber}', [CustomerController::class, 'getByContactNumber']);
 
-Route::get('shifts', [ShiftController::class, 'index']);
+Route::get('shift', [ShiftController::class, 'index']);
 
-Route::post('shifts', [ShiftController::class, 'store']);
+Route::post('shift', [ShiftController::class, 'store']);
 
 Route::post('employees', [EmployeeController::class, 'store']);
 
@@ -77,3 +77,10 @@ Route::post('items_sold', [ItemsController::class, 'store']);
 Route::get('transactions/{TransactionID}', [TransactionsController::class, 'show']);
 
 Route::get('items_sold/{SaleID}', [ItemsController::class, 'show']);
+
+Route::patch('/employees/{employee_id}/hours', [EmployeeController::class, 'updateHours']);
+
+Route::get('shift/{shift_id}', [ShiftController::class, 'show']);
+
+Route::put('shift/{shift_id}', [ShiftController::class,'updateShift']);
+
