@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\ExportController;
+use App\Http\Controllers\ReportsController;
 
 
 /*
@@ -19,4 +19,4 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::post('/api/export', [ExportController::class, 'export']);
+Route::POST('/api/export', [ ReportsController::class, 'export']);

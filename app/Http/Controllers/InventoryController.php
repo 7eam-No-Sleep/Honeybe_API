@@ -30,7 +30,7 @@ class InventoryController extends Controller
         $inventory = inventory::create($validatedData);
         
         return response()->json(['message'=>'Product created successfully', 'inventory' => $inventory], 201);
-     }
+    }
      public function show($ProductID){
         $inventory = inventory::findOrFail($ProductID);
     
@@ -53,3 +53,7 @@ class InventoryController extends Controller
     return response()->json(['message' => 'Product updated successfully'], 200);
 }
 }
+
+
+
+

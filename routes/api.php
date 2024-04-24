@@ -10,6 +10,8 @@ use App\Http\Controllers\TransactionsController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\ShiftController;
 use App\Http\Controllers\CardsController;
+use App\Http\Controllers\ReportsController;
+use App\Http\Controllers\OpenAIController;
 
 
 
@@ -82,5 +84,8 @@ Route::patch('/employees/{employee_id}/hours', [EmployeeController::class, 'upda
 
 Route::get('shift/{shift_id}', [ShiftController::class, 'show']);
 
-Route::put('shift/{shift_id}', [ShiftController::class,'updateShift']);
+Route::put('shift/{shift_id}', [ShiftController::class,'updateShift']); 
 
+Route::put('request', [ReportsController::class, 'exportData']);
+
+Route::post('/openai/parse-csv', [OpenAIController::class, 'parseCSV']);
